@@ -1,11 +1,12 @@
 import React from 'react';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, Text, ScrollView, View } from 'react-native';
 import LoginInput from "../components/input"
 import LoginButton from "../components/button"
 import { UserStore } from '../stores/UserStore';
 import { getUIConstantFromFirebaseError } from '../components/error/auth';
 import { RNFirebase } from 'react-native-firebase';
 import { styleConstants } from '../config/constants';
+import { requiredFieldsEmpty } from '../utilities/FormValidation';
 
 interface Props {
     userStore: UserStore;
@@ -19,6 +20,18 @@ interface State {
     phoneNumber?: string;
 }
 export class SignUp extends React.Component<Props, State> {
+    constructor(props: Props) {
+        super(props);
+
+        this.state = {
+            email: '',
+            password: '',
+            firstName: '',
+            lastName: '',
+            phoneNumber: '',
+        };
+    }
+
     private onPressSignUpButton = (): void => {
         if (false === this.validateInputs()) {
             return;
@@ -62,22 +75,10 @@ export class SignUp extends React.Component<Props, State> {
         return true;
     }
 
-    private requiredFieldsEmpty(): boolean {
-        if (this.state == null) {
-            return true;
-        }
-        const { email, password, firstName, lastName } = this.state;
-        if (!email || !password || !firstName || !lastName) {
-            return true;
-        } else if (email === '' || password === '' || firstName === '' || lastName === '') {
-            return true;
-        }
-        return false;
-    }
-
     public render(): JSX.Element {
+        const { email, password, firstName, lastName } = this.state;
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.scroll}>
                 <Text style={styles.title}>{signUpUIStrings.SIGN_UP_TITLE}</Text>
                 <LoginInput
                     title='First Name*'
@@ -117,10 +118,10 @@ export class SignUp extends React.Component<Props, State> {
                     }}
                     keyboardType="phone-pad"
                 />
-                <LoginButton disabled={this.requiredFieldsEmpty()} onPress={this.onPressSignUpButton}>
+                <LoginButton disabled={requiredFieldsEmpty(email, password, firstName, lastName)} onPress={this.onPressSignUpButton}>
                     <Text>{signUpUIStrings.SIGN_UP}</Text>
                 </LoginButton>
-            </View>
+            </ScrollView>
         )
     }
 }
@@ -137,12 +138,8 @@ const signUpUIStrings = {
     SIGN_UP: 'Sign Up',
 };
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
+    scroll: {
         backgroundColor: styleConstants.colors.APP_BACKGROUND,
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingVertical: 50,
         paddingHorizontal: '7.5%',
     },
     title: {

@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         backgroundColor: styleConstants.colors.PRIMARY_BUTTON,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 'auto',
+        marginVertical: 50,
         borderRadius: 2,
         shadowOffset: { width: 0, height: 2 },
         shadowColor: 'black',
