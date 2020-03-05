@@ -13,39 +13,33 @@ const Input: React.SFC<TextInputProperties> = ({ style, ...props }) => {
                 {...props}
                 style={[styles.input, style, getPlaceholderStyle(props)]}
                 placeholder={props.placeholder}
-                placeholderTextColor="gray"
+                placeholderTextColor={styleConstants.colors.TOS_BODY_COPY}
                 autoCorrect={false}
                 spellCheck={false}
             />
-            <View style={styles.bottomBorder} />
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     input: {
-        color: 'gray',
+        color: styleConstants.colors.TOS_BODY_COPY,
+        backgroundColor: styleConstants.colors.INPUT_BACKGROUND,
         width: '85%',
         marginLeft: '7.5%',
         marginRight: '7.5%',
         height: 50,
         marginTop: 20,
-        paddingBottom: 0
+        paddingBottom: 0,
+        borderColor: styleConstants.colors.INPUT_BACKGROUND_BORDER,
+        borderRadius: 5,
+        borderWidth: 1,
     } as TextStyle,
-    bottomBorder: {
-        height: 1,
-        backgroundColor: '#F6F8FB',
-        width: '85%',
-        marginLeft: '7.5%',
-        marginRight: '7.5%',
-        marginTop: -8,
-        borderRadius: 5
-    },
     maxWidth: {
         width: '100%'
     },
     placeholderFont: {
-        color: 'gray',
+        color: styleConstants.colors.TOS_BODY_COPY,
         fontSize: 16,
         opacity: 1.0
     }

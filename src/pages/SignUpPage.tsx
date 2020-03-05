@@ -5,6 +5,7 @@ import LoginButton from "../components/button"
 import { UserStore } from '../stores/UserStore';
 import { getUIConstantFromFirebaseError } from '../components/error/auth';
 import { RNFirebase } from 'react-native-firebase';
+import { styleConstants } from '../config/constants';
 
 interface Props {
     userStore: UserStore;
@@ -116,9 +117,10 @@ const signUpUIStrings = {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: styleConstants.colors.APP_BACKGROUND,
+        alignItems: styleConstants.flexAlign.CENTER,
+        justifyContent: styleConstants.flexJustify.CENTER,
+        marginBottom: 40,
     },
 });
 

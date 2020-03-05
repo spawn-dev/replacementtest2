@@ -20,7 +20,9 @@ export const styleConstants = {
         DRAWER_ACTIVE_TINT: '#F3A947',
         DRAWER_BG: '#00000000',
         DRAWER_INACTIVE_TINT: '#727272',
-        APP_BACKGROUND: '#FFF'
+        APP_BACKGROUND: '#FFF',
+        INPUT_BACKGROUND: '#F6F8FB',
+        INPUT_BACKGROUND_BORDER: '#757E99',
     },
     fontFamily: { DEFAULT: 'Montserrat' },
     position: {
