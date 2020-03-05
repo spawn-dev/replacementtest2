@@ -61,44 +61,64 @@ export class SignUp extends React.Component<Props, State> {
 
         return true;
     }
+
+    private emptyRequiredFields(): boolean {
+        if (this.state == null) {
+            return true;
+        }
+        const { email, password, firstName, lastName } = this.state;
+        if (!email || !password || !firstName || !lastName) {
+            return true;
+        } else if (email === '' || password === '' || firstName === '' || lastName === '') {
+            return true;
+        }
+        return false;
+    }
+
     public render(): JSX.Element {
         return (
             <View style={styles.container}>
+                <Text style={styles.title}>{signUpUIStrings.SIGN_UP_TITLE}</Text>
                 <LoginInput
-                    placeholder='first name*'
+                    title='First Name*'
+                    placeholder='Enter Your First Name'
                     onChangeText={(firstName: string) => {
                         this.setState({ firstName: firstName })
                     }}
                 />
                 <LoginInput
-                    placeholder='last name*'
+                    title='Last Name*'
+                    placeholder='Enter Your Last Name'
                     onChangeText={(lastName: string) => {
                         this.setState({ lastName: lastName })
                     }}
                 />
                 <LoginInput
-                    placeholder='email*'
+                    title='Email*'
+                    placeholder='Enter Your Email'
                     onChangeText={(email: string) => {
                         this.setState({ email: email })
                     }}
                     keyboardType="email-address"
                 />
                 <LoginInput
+                    title='Password*'
                     secureTextEntry={true}
-                    placeholder='password*'
+                    placeholder='Enter Your Password'
                     onChangeText={(password: string) => {
                         this.setState({ password: password })
                     }}
                 />
                 <LoginInput
-                    placeholder='phone number'
+                    title='Phone Number'
+                    placeholder='Enter Your Phone Number'
                     onChangeText={(phoneNumber: string) => {
                         this.setState({ phoneNumber: phoneNumber })
                     }}
                     keyboardType="phone-pad"
                 />
-                <LoginButton onPress={this.onPressSignUpButton}>
-                    <Text>Sign Up</Text>
+                <LoginButton disabled={this.emptyRequiredFields()} onPress={this.onPressSignUpButton}>
+                    <Text>{signUpUIStrings.SIGN_UP}</Text>
                 </LoginButton>
             </View>
         )
@@ -113,14 +133,23 @@ const signUpUIStrings = {
     ALERT_ENTER_EMAIL: 'You must enter an email and a password',
     ALERT_ENTER_PASS: 'You must enter an email and a password',
     ALERT_ENTER_FIRST_AND_LAST: 'You must enter an first and last name',
+    SIGN_UP_TITLE: 'Sign Up For An Account',
+    SIGN_UP: 'Sign Up',
 };
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: styleConstants.colors.APP_BACKGROUND,
-        alignItems: styleConstants.flexAlign.CENTER,
-        justifyContent: styleConstants.flexJustify.CENTER,
-        marginBottom: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 40,
+        paddingHorizontal: '7.5%',
+    },
+    title: {
+        fontSize: styleConstants.fontSize.XX_LARGE,
+        color: styleConstants.colors.TITLE_PRIMARY,
+        fontWeight: styleConstants.fontWeight.BOLD,
+        width: '100%',
     },
 });
 
