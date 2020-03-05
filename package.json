@@ -8,9 +8,11 @@
     "start": "react-native start",
     "android": "react-native run-android",
     "ios": "react-native run-ios --scheme myapp",
-    "postinstall": "jetify && cd ios && pod install && cd - && npm run create-config-files",
+    "postinstall": "jetify && npm run podinstall && npm run create-config-files && npm run decode-appcenter-config",
+    "podinstall": "cd ios && pod install && cd -",
     "xcode": "open ./ios/myapp.xcworkspace || open ./ios/myapp.xcodeproj",
-    "create-config-files": "node create.config.files.js $npm_package_config_iosProjectName $npm_package_config_androidProjectName"
+    "create-config-files": "node create.config.files.js $npm_package_config_iosProjectName $npm_package_config_androidProjectName",
+    "decode-appcenter-config": "./scripts/appcenter_decode.sh"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",
