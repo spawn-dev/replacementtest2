@@ -8,7 +8,7 @@
     "start": "react-native start",
     "android": "react-native run-android",
     "ios": "react-native run-ios --scheme myapp",
-    "postinstall": "jetify && npm run podinstall && npm run create-config-files && npm run decode-appcenter-config",
+    "postinstall": "jetify && npm run podinstall && npm run decode-appcenter-config && npm run create-config-files",
     "podinstall": "cd ios && pod install && cd -",
     "xcode": "open ./ios/myapp.xcworkspace || open ./ios/myapp.xcodeproj",
     "create-config-files": "node create.config.files.js $npm_package_config_iosProjectName $npm_package_config_androidProjectName",
