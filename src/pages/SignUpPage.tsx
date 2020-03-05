@@ -62,7 +62,7 @@ export class SignUp extends React.Component<Props, State> {
         return true;
     }
 
-    private emptyRequiredFields(): boolean {
+    private requiredFieldsEmpty(): boolean {
         if (this.state == null) {
             return true;
         }
@@ -117,7 +117,7 @@ export class SignUp extends React.Component<Props, State> {
                     }}
                     keyboardType="phone-pad"
                 />
-                <LoginButton disabled={this.emptyRequiredFields()} onPress={this.onPressSignUpButton}>
+                <LoginButton disabled={this.requiredFieldsEmpty()} onPress={this.onPressSignUpButton}>
                     <Text>{signUpUIStrings.SIGN_UP}</Text>
                 </LoginButton>
             </View>
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
         backgroundColor: styleConstants.colors.APP_BACKGROUND,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: 40,
+        paddingVertical: 50,
         paddingHorizontal: '7.5%',
     },
     title: {

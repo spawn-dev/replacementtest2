@@ -54,7 +54,7 @@ export class Login extends React.Component<Props, State> {
         return true;
     }
 
-    private emptyRequiredFields(): boolean {
+    private requiredFieldsEmpty(): boolean {
         if (this.state == null) {
             return true;
         }
@@ -87,7 +87,7 @@ export class Login extends React.Component<Props, State> {
                         this.setState({ password: password })
                     }}
                 />
-                <LoginButton disabled={this.emptyRequiredFields()} onPress={this.onPressLoginButton}>
+                <LoginButton disabled={this.requiredFieldsEmpty()} onPress={this.onPressLoginButton}>
                     <Text >Login</Text>
                 </LoginButton>
             </View>
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         backgroundColor: styleConstants.colors.APP_BACKGROUND,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: 40,
+        paddingVertical: 100,
         paddingHorizontal: '7.5%',
     },
     title: {
