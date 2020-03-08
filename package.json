@@ -1,16 +1,16 @@
 {
-  "name": "myapp",
+  "name": "replacementtest2",
   "config": {
-    "iosProjectName": "1:157175452340:ios:41629cc9b57c97d5f9bde1",
-    "androidProjectName": "1:157175452340:android:6202e96dce8ed954f9bde1"
+    "iosProjectName": "",
+    "androidProjectName": ""
   },
   "scripts": {
     "start": "react-native start",
     "android": "react-native run-android",
-    "ios": "react-native run-ios --scheme myapp",
+    "ios": "react-native run-ios --scheme replacementtest2",
     "postinstall": "jetify && npm run podinstall && npm run decode-appcenter-config && npm run create-config-files",
     "podinstall": "cd ios && pod install && cd -",
-    "xcode": "open ./ios/myapp.xcworkspace || open ./ios/myapp.xcodeproj",
+    "xcode": "open ./ios/replacementtest2.xcworkspace || open ./ios/replacementtest2.xcodeproj",
     "create-config-files": "node create.config.files.js $npm_package_config_iosProjectName $npm_package_config_androidProjectName",
     "test": "jest",
     "decode-appcenter-config": "./scripts/appcenter_decode.sh"

@@ -21,4 +21,4 @@ For both Android and IOS be sure to run ```npm install``` this will install the 
 4. The app should run on the emulator
 
 
-https://console.firebase.google.com/project/myapp-22b6f/settings/serviceaccounts/adminsdk
+https://console.firebase.google.com/project/replacementtest2-22b6f/settings/serviceaccounts/adminsdk
